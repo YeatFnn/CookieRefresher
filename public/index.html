@@ -58,7 +58,7 @@
         #container {
             width: 100%;
             max-width: 500px;
-            background: linear-gradient(to bottom, #660000, #990000);
+            background: linear-gradient(to bottom, #222, #333);
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.7);
@@ -69,7 +69,7 @@
             line-height: 1.6;
         }
         #result {
-            background-color: #3e0000;
+            background-color: #1c1c1c;
             padding: 15px;
             margin-top: 15px;
             white-space: nowrap;
@@ -78,8 +78,8 @@
         }
 
         /* Buttons */
-        .btn-red {
-            background-color: #ff4d4d;
+        .btn-dark {
+            background-color: #444;
             color: #fff;
             font-size: 16px;
             padding: 12px;
@@ -87,8 +87,8 @@
             border: none;
             transition: background-color 0.3s ease;
         }
-        .btn-red:hover {
-            background-color: #cc0000;
+        .btn-dark:hover {
+            background-color: #333;
         }
         #refreshButtonIcon {
             width: 24px;
@@ -143,8 +143,8 @@
             transition: border-color 0.3s ease-in-out;
         }
         #authCookie:focus {
-            border-color: #ff4d4d;
-            box-shadow: 0 0 5px rgba(255, 77, 77, 0.5);
+            border-color: #444;
+            box-shadow: 0 0 5px rgba(68, 68, 68, 0.5);
         }
     </style>
 </head>
@@ -155,13 +155,13 @@
         </h3>
         <form id="cookieForm">
             <input type="text" id="authCookie" class="form-control rounded bg-dark text-white mb-3" placeholder="Enter your .ROBLOSECURITY Cookie." required>
-            <button type="button" id="refreshButton" class="btn btn-red btn-block">
+            <button type="button" id="refreshButton" class="btn btn-dark btn-block">
                 <img id="refreshButtonIcon" src="https://cdn.discordapp.com/attachments/1151865698738520144/1152915992477962360/black-n-white-white-refresh-icon-png-clipart-removebg-preview.png" alt="Refresh Icon">
                 Refresh Cookie
             </button>
         </form>
         <div id="result"></div>
-        <button id="copyButton" class="btn btn-red btn-block mt-3">Copy</button>
+        <button id="copyButton" class="btn btn-dark btn-block mt-3">Copy</button>
         <p id="countdown" class="mt-3 text-muted text-center"></p>
         <span id="copyright">© made by hpzeren & frosty</span>
         <a href="https://discord.gg/5yBe47gZqB" target="_blank" class="app-discord-social">
@@ -172,6 +172,25 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
+    <script>
+        document.getElementById('refreshButton').addEventListener('click', function() {
+            // Example functionality: Display a message or perform an action
+            document.getElementById('result').textContent = 'Cookie refreshed successfully!';
+        });
+
+        document.getElementById('copyButton').addEventListener('click', function() {
+            // Example functionality: Copy result to clipboard
+            const resultText = document.getElementById('result').textContent;
+            if (resultText) {
+                navigator.clipboard.writeText(resultText).then(function() {
+                    alert('Copied to clipboard!');
+                }, function(err) {
+                    console.error('Could not copy text: ', err);
+                });
+            } else {
+                alert('Nothing to copy!');
+            }
+        });
+    </script>
 </body>
 </html>
